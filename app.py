@@ -54,8 +54,8 @@ def main():
     if st.sidebar.button('Predict'):
         patient_data = {
             'age': age,
-            'gender': 0 if education == 'Female' else 1,
-            'residence': 0 if education == 'Urban' else 1,
+            'gender': 0 if gender == 'Female' else 1,
+            'residence': 0 if residence == 'Urban' else 1,
             'waist': waist
 }
         
@@ -82,6 +82,7 @@ if __name__ == '__main__':
 
 
 # In[ ]:
+
 
 
 
