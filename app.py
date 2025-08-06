@@ -17,7 +17,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-       
 # 加载预训练模型
 try:
     # 确保model.pkl文件存在于同一目录
@@ -49,17 +48,15 @@ def main():
     age = st.sidebar.slider('Age', 45, 100, 50)
     gender = st.sidebar.selectbox('Gender', ['Female', 'Male'])
     residence = st.sidebar.selectbox('Residence', ['Urban', 'Rural'])
-    waist = st.sidebar.slider('Waist Circumference', 15, 150, 60)
+    waist = st.sidebar.slider('Waist Circumference (cm)', 15, 150, 60)
 
-    
-       
     if st.sidebar.button('Predict'):
         patient_data = {
             'age': age,
             'gender': 0 if gender == 'Female' else 1,
             'residence': 0 if residence == 'Urban' else 1,
             'waist': waist
-}
+        }
         
         prediction, proba = predict_prevalence(patient_data)
         
@@ -71,7 +68,7 @@ def main():
                 st.success(f'Low Risk: Sarcopenia probability {proba[0]*100:.2f}%')
             
             st.progress(proba[1])
-            st.write(f'Survival: {proba[0]*100:.2f}% | Sarcopenia: {proba[1]*100:.2f}%')
+            st.write(f'Low Risk: {proba[0]*100:.2f}% | High Risk: {proba[1]*100:.2f}%')
 
 if __name__ == '__main__':
     main()
@@ -84,6 +81,7 @@ if __name__ == '__main__':
 
 
 # In[ ]:
+
 
 
 
